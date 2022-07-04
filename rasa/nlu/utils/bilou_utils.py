@@ -1,5 +1,6 @@
 import logging
 import operator
+import numpy as np
 from collections import defaultdict, Counter
 from typing import List, Tuple, Text, Optional, Dict, Any, TYPE_CHECKING
 
@@ -402,7 +403,7 @@ def _avg_confidence_per_tag(
 
     avg_confidence_per_tag = {}
     for tag, confidences in confidences_per_tag.items():
-        avg_confidence_per_tag[tag] = round(sum(confidences) / len(confidences), 2)
+        avg_confidence_per_tag[tag] = round(np.mean(confidences), 2)
 
     return avg_confidence_per_tag
 
